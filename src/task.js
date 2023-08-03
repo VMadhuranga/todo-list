@@ -1,7 +1,12 @@
 export class Task {
-    addTask(title, description, date) {
+    constructor(title, description) {
         this.title = title;
         this.description = description;
-        this.date = date;
+        this.date = new Date().toDateString();
+        this.complete = false;
+    }
+
+    markAsComplete() {
+        this.complete = true;
     }
 }
