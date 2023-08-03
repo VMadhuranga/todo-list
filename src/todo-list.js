@@ -9,7 +9,19 @@ export class TodoList {
     }
 
     createNewListTask(listName, title, description) {
-        return this.todoList.find((list) => list[listName]
-        .push(new Task(title, description)));
+        this.todoList.find((list) => {
+            if (list[listName]) {
+                list[listName].push(new Task(title, description));
+            }
+        });
+    }
+
+    updateList(oldListName, newListName) {
+        this.todoList.find((item) => {
+            if (item[oldListName]) {
+                item[newListName] = item[oldListName];
+                delete item[oldListName];
+            }
+        });
     }
 }
