@@ -1,4 +1,5 @@
 import { TodoList } from "./todo-list";
+import "./style.css";
 
 const task = new TodoList;
 
