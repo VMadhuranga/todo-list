@@ -16,12 +16,16 @@ export class TodoList {
         });
     }
 
-    updateList(oldListName, newListName) {
+    renameList(oldListName, newListName) {
         this.todoList.find((item) => {
             if (item[oldListName]) {
                 item[newListName] = item[oldListName];
                 delete item[oldListName];
             }
         });
+    }
+
+    deleteList(listName) {
+        this.todoList.splice(this.todoList.findIndex((item) => item[listName]), 1);
     }
 }

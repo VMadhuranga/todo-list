@@ -23,4 +23,6 @@ task.updateList("testList1", "updatedTestList1");
 task.updateList("testList2", "updatedTestList2");
 task.updateList("testList3", "updatedTestList3");
 
+task.deleteList("updatedTestList1");
+
 console.log(task);
