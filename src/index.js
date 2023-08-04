@@ -3,29 +3,32 @@ import "./style.css";
 
 const task = new TodoList;
 
-task.createNewList("testList1");
-task.createNewList("testList2");
-task.createNewList("testList3");
+task.createList("testList1");
+task.createList("testList2");
+task.createList("testList3");
 
-task.createNewListTask("testList1", "testTitle1", "testDescription1");
-task.createNewListTask("testList1", "testTitle2", "testDescription2");
-task.createNewListTask("testList1", "testTitle3", "testDescription3");
+task.createListTask("testList1", "testTitle1", "testDescription1");
+task.createListTask("testList1", "testTitle2", "testDescription2");
+task.createListTask("testList1", "testTitle3", "testDescription3");
 
-task.createNewListTask("testList2", "testTitle1", "testDescription1");
-task.createNewListTask("testList2", "testTitle2", "testDescription2");
-task.createNewListTask("testList2", "testTitle3", "testDescription3");
+task.createListTask("testList2", "testTitle1", "testDescription1");
+task.createListTask("testList2", "testTitle2", "testDescription2");
+task.createListTask("testList2", "testTitle3", "testDescription3");
 
-task.createNewListTask("testList3", "testTitle1", "testDescription1");
-task.createNewListTask("testList3", "testTitle2", "testDescription2");
-task.createNewListTask("testList3", "testTitle3", "testDescription3");
+task.createListTask("testList3", "testTitle1", "testDescription1");
+task.createListTask("testList3", "testTitle2", "testDescription2");
+task.createListTask("testList3", "testTitle3", "testDescription3");
 
-task.renameList("testList1", "updatedTestList1");
-task.renameList("testList2", "updatedTestList2");
-task.renameList("testList3", "updatedTestList3");
+// task.renameList("testList1", "updatedTestList1");
+// task.renameList("testList2", "updatedTestList2");
+// task.renameList("testList3", "updatedTestList3");
+
+// task.getListTask("testList2", "testTitle1").updateTask("updatedTestTitle1", "updatedTestDescription1");
+// task.deleteListTask("testList2", "testTitle2");
 
 // task.deleteList("updatedTestList1");
-task.getListTask("updatedTestList2", "testTitle1").updateTask("updatedTestTitle1", "updatedTestDescription1");
-// console.log(task.getListTask("updatedTestList2", "testTitle1"));
-task.deleteListTask("updatedTestList2", "testTitle2");
+
+// console.log(task.getListTask("testList2", "testTitle1"));
+// console.log(task.getList("testList2"));
 
 console.log(task);

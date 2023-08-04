@@ -4,8 +4,12 @@ export class TodoList {
 
     todoList = [];
 
-    createNewList(listName) {
+    createList(listName) {
         this.todoList.push({[listName]: []});
+    }
+
+    getList(listName) {
+        return this.todoList.find(item => item[listName])[listName];
     }
 
     renameList(oldListName, newListName) {
@@ -21,21 +25,19 @@ export class TodoList {
         this.todoList.splice(this.todoList.findIndex((item) => item[listName]), 1);
     }
 
-    createNewListTask(listName, title, description) {
-        this.todoList.find((list) => {
-            if (list[listName]) {
-                list[listName].push(new Task(title, description));
-            }
-        });
+    createListTask(listName, title, description) {
+        if (this.getList(listName)) {
+            this.getList(listName).push(new Task(title, description));
+        }
     }
 
     getListTask(listName, taskTitle) {
-        const listTask = this.todoList.find((list) => list[listName])[listName];
-        return listTask.find(element => element["title"] === taskTitle);
+        return this.getList(listName).find(element => element["title"] === taskTitle);
     }
 
     deleteListTask(listName, taskTitle) {
-        const listTask = this.todoList.find((list) => list[listName])[listName];
-        listTask.splice(listTask.findIndex(item => item === this.getListTask(listName, taskTitle)), 1);
+        this.getList(listName).splice(
+            this.getList(listName).findIndex(item => item === this.getListTask(listName, taskTitle)), 1
+        );
     }
 }
