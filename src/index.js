@@ -25,5 +25,7 @@ task.renameList("testList3", "updatedTestList3");
 
 // task.deleteList("updatedTestList1");
 task.getListTask("updatedTestList2", "testTitle1").updateTask("updatedTestTitle1", "updatedTestDescription1");
+// console.log(task.getListTask("updatedTestList2", "testTitle1"));
+task.deleteListTask("updatedTestList2", "testTitle2");
 
 console.log(task);

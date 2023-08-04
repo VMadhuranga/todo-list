@@ -30,7 +30,12 @@ export class TodoList {
     }
 
     getListTask(listName, taskTitle) {
-        const taskList = this.todoList.find((list) => list[listName])[listName];
-        return taskList.find(element => element["title"] === taskTitle);
+        const listTask = this.todoList.find((list) => list[listName])[listName];
+        return listTask.find(element => element["title"] === taskTitle);
+    }
+
+    deleteListTask(listName, taskTitle) {
+        const listTask = this.todoList.find((list) => list[listName])[listName];
+        listTask.splice(listTask.findIndex(item => item === this.getListTask(listName, taskTitle)), 1);
     }
 }
