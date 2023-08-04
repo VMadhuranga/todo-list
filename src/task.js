@@ -9,4 +9,9 @@ export class Task {
     markAsComplete() {
         this.complete = true;
     }
+
+    updateTask(title, description) {
+        this.title = title;
+        this.description = description;
+    }
 }
