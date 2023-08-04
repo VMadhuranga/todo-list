@@ -2,18 +2,18 @@ import { Task } from "./task";
 
 export class TodoList {
 
-    todoList = [];
+    list = [];
 
     createList(listName) {
-        this.todoList.push({[listName]: []});
+        this.list.push({[listName]: []});
     }
 
     getList(listName) {
-        return this.todoList.find(item => item[listName])[listName];
+        return this.list.find(item => item[listName])[listName];
     }
 
     renameList(oldListName, newListName) {
-        this.todoList.find((item) => {
+        this.list.find((item) => {
             if (item[oldListName]) {
                 item[newListName] = item[oldListName];
                 delete item[oldListName];
@@ -22,7 +22,7 @@ export class TodoList {
     }
 
     deleteList(listName) {
-        this.todoList.splice(this.todoList.findIndex((item) => item[listName]), 1);
+        this.list.splice(this.list.findIndex((item) => item[listName]), 1);
     }
 
     createListTask(listName, title, description) {
