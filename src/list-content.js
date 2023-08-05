@@ -68,8 +68,9 @@ export function ListContent(todoList) {
             if (addListInput.value) {
                 item.createList(addListInput.value);
                 updateListContainer(addListInput.value);
+            } else {
+                alert("Please provide a list name");
             }
-            console.log(item);
         });
     }
 
@@ -77,7 +78,6 @@ export function ListContent(todoList) {
         deleteListItemButton.addEventListener("click", function() {
             todoList.deleteList(this.previousElementSibling.textContent);
             this.parentElement.remove();
-            console.log(todoList);
         });
     }
 
@@ -89,7 +89,6 @@ export function ListContent(todoList) {
                     todoList.renameList(item.listItem.textContent, item.editListItemInput.value);
                     item.listItem.textContent = item.editListItemInput.value;
                 }
-                console.log(todoList);
             });
         });
     }
