@@ -3,7 +3,6 @@ import { ListContent } from "./list-content";
 import "./style.css";
 
 const todoList = new TodoList;
-const {renderListContainer, addList} = ListContent();
 
 todoList.createList("testList1");
 todoList.createList("testList2");
@@ -32,6 +31,6 @@ todoList.createList("testList3");
 
 // console.log(task.getListTask("testList2", "testTitle1"));
 // console.log(task.getList("testList2"));
-addList(todoList);
-renderListContainer(todoList.list);
+
+ListContent(todoList);
 console.log(todoList);
