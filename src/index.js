@@ -8,26 +8,20 @@ todoList.createList("testList1");
 todoList.createList("testList2");
 todoList.createList("testList3");
 
-// task.createListTask("testList1", "testTitle1", "testDescription1");
-// task.createListTask("testList1", "testTitle2", "testDescription2");
-// task.createListTask("testList1", "testTitle3", "testDescription3");
+todoList.createListTask("testList1", "testTitle1", "testDescription1");
+todoList.createListTask("testList1", "testTitle2", "testDescription2");
+todoList.createListTask("testList1", "testTitle3", "testDescription3");
 
-// task.createListTask("testList2", "testTitle1", "testDescription1");
-// task.createListTask("testList2", "testTitle2", "testDescription2");
-// task.createListTask("testList2", "testTitle3", "testDescription3");
+todoList.createListTask("testList2", "testTitle1", "testDescription1");
+todoList.createListTask("testList2", "testTitle2", "testDescription2");
+todoList.createListTask("testList2", "testTitle3", "testDescription3");
 
-// task.createListTask("testList3", "testTitle1", "testDescription1");
-// task.createListTask("testList3", "testTitle2", "testDescription2");
-// task.createListTask("testList3", "testTitle3", "testDescription3");
-
-// task.renameList("testList1", "updatedTestList1");
-// task.renameList("testList2", "updatedTestList2");
-// task.renameList("testList3", "updatedTestList3");
+todoList.createListTask("testList3", "testTitle1", "testDescription1");
+todoList.createListTask("testList3", "testTitle2", "testDescription2");
+todoList.createListTask("testList3", "testTitle3", "testDescription3");
 
 // task.getListTask("testList2", "testTitle1").updateTask("updatedTestTitle1", "updatedTestDescription1");
 // task.deleteListTask("testList2", "testTitle2");
-
-// task.deleteList("updatedTestList1");
 
 // console.log(task.getListTask("testList2", "testTitle1"));
 // console.log(task.getList("testList2"));

@@ -1,3 +1,5 @@
+import { TaskContent } from "./task-content";
+
 export function ListContent(todoList) {
     const listContainer = document.querySelector(".list-container");
     const addListButton = document.querySelector(".add-list-button");
@@ -51,6 +53,7 @@ export function ListContent(todoList) {
                 editListItemSubmitButton
             }
         );
+        TaskContent(todoList, listItem);
 
         listItemContainer.appendChild(listItem);
         listItemContainer.appendChild(deleteListItemButton);
@@ -98,6 +101,6 @@ export function ListContent(todoList) {
         });
     }
 
-    renderListContainer(todoList.list)
+    renderListContainer(todoList.list);
     addListItem(todoList);
 }
