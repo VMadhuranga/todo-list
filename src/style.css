@@ -12,8 +12,10 @@ body {
 }
 
 .header {
+    color: white;
+    text-align: center;
+    background-color: darkslategray;
     padding: 10px;
-    border: 1px solid;
     grid-column: 1 / -1;
 }
 
