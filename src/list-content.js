@@ -17,23 +17,29 @@ export function ListContent(todoList) {
         const editListItemButton = document.createElement("button");
         const editListItemModal = document.createElement("dialog");
         const editListItemForm = document.createElement("form");
+        const editListItemFormTitle = document.createElement("h1");
         const editListItemInput = document.createElement("input");
         const editListItemSubmitButton = document.createElement("button");
+        const editListItemCancelButton = document.createElement("button");
         const listItemContainer = document.createElement("div");
 
         listItem.textContent = item;
+        editListItemFormTitle.textContent = "Edit List";
         editListItemSubmitButton.textContent = "Submit";
+        editListItemCancelButton.textContent = "Cancel";
 
         listItem.classList.add("list-item");
         deleteListItemButton.classList.add("delete-list-item-button");
         editListItemButton.classList.add("edit-list-item-button");
-        editListItemModal.classList.add("edit-list-modal");
-        editListItemForm.classList.add("edit-list-form");
-        editListItemInput.classList.add("edit-list-input");
-        editListItemSubmitButton.classList.add("edit-list-submit-button");
+        editListItemModal.classList.add("edit-list-item-modal");
+        editListItemForm.classList.add("edit-list-item-form");
+        editListItemInput.classList.add("edit-list-item-input");
+        editListItemSubmitButton.classList.add("edit-list-item-submit-button");
+        editListItemCancelButton.classList.add("edit-list-item-cancel-button");
         listItemContainer.classList.add("list-item-container");
 
         editListItemForm.setAttribute("method", "dialog");
+        editListItemInput.setAttribute("placeholder", "New List Name");
 
         deleteListItem(deleteListItemButton);
         editListItem(
@@ -49,8 +55,10 @@ export function ListContent(todoList) {
         listItemContainer.appendChild(listItem);
         listItemContainer.appendChild(deleteListItemButton);
         listItemContainer.appendChild(editListItemButton);
+        editListItemForm.appendChild(editListItemFormTitle);
         editListItemForm.appendChild(editListItemInput);
         editListItemForm.appendChild(editListItemSubmitButton);
+        editListItemForm.appendChild(editListItemCancelButton);
         editListItemModal.appendChild(editListItemForm);
         listItemContainer.appendChild(editListItemModal);
         listContainer.appendChild(listItemContainer);
@@ -80,7 +88,7 @@ export function ListContent(todoList) {
 
     function editListItem(item) {
         item.editListItemButton.addEventListener("click", function() {
-            item.editListItemModal.show();
+            item.editListItemModal.showModal();
             item.editListItemSubmitButton.addEventListener("click", function() {
                 if (item.editListItemInput.value) {
                     todoList.renameList(item.listItem.textContent, item.editListItemInput.value);

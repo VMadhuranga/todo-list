@@ -41,7 +41,8 @@ body {
     border-radius: 5px;
 }
 
-.add-list-modal {
+.add-list-modal,
+.edit-list-item-modal {
     border: none;
     border-radius: 5px;
     margin: auto;
@@ -51,7 +52,8 @@ body {
     }
 }
 
-.add-list-form {
+.add-list-form,
+.edit-list-item-form {
     text-align: center;
     padding: 10px;
     display: flex;
@@ -59,18 +61,22 @@ body {
     flex-direction: column;
 
     & h1 {
+        font-size: 2rem;
         color: darkslategrey;
     }
 }
 
-.add-list-input {
+.add-list-input,
+.edit-list-item-input {
     font-size: 1.2rem;
     padding: 5px 10px;
     border-radius: 5px;
 }
 
 .add-list-submit-button,
-.add-list-cancel-button {
+.add-list-cancel-button,
+.edit-list-item-submit-button,
+.edit-list-item-cancel-button {
     font-size: 1.2rem;
     color: white;
     font-weight: bold;
@@ -79,11 +85,13 @@ body {
     border-radius: 5px;
 }
 
-.add-list-submit-button {
+.add-list-submit-button,
+.edit-list-item-submit-button  {
     background-color: #3b82f6;
 }
 
-.add-list-cancel-button {
+.add-list-cancel-button,
+.edit-list-item-cancel-button {
     background-color: #ef4444;
 }
 
@@ -105,7 +113,8 @@ body {
         width: 100%;
     }
 
-    & button {
+    & .delete-list-item-button,
+    & .edit-list-item-button {
         width: 1.2rem;
         height: 1.2rem;
         border: none;
