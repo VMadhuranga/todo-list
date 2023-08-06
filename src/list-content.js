@@ -22,13 +22,11 @@ export function ListContent(todoList) {
         const listItemContainer = document.createElement("div");
 
         listItem.textContent = item;
-        deleteListItemButton.textContent = "\u2A09";
-        editListItemButton.textContent = "\u270F";
         editListItemSubmitButton.textContent = "Submit";
 
         listItem.classList.add("list-item");
         deleteListItemButton.classList.add("delete-list-item-button");
-        editListItemButton.classList.add("edit-list-item-container");
+        editListItemButton.classList.add("edit-list-item-button");
         editListItemModal.classList.add("edit-list-modal");
         editListItemForm.classList.add("edit-list-form");
         editListItemInput.classList.add("edit-list-input");
