@@ -6,6 +6,7 @@
 
 body {
     height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: auto 1fr;
@@ -20,11 +21,72 @@ body {
 }
 
 .list-content {
+    background-color: lightgray;
     padding: 10px;
-    border: 1px solid;
+}
+
+.add-list-content {
+    margin-bottom: 10px;
+    display: grid;
+    place-items: center;
+}
+
+.add-list-button {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #16a34a;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.add-list-modal {
+    border: none;
+    border-radius: 5px;
+    margin: auto;
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.5)
+    }
+}
+
+.add-list-form {
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+
+    & h1 {
+        color: darkslategrey;
+    }
+}
+
+.add-list-input {
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.add-list-submit-button,
+.add-list-cancel-button {
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    padding: 5px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.add-list-submit-button {
+    background-color: #3b82f6;
+}
+
+.add-list-cancel-button {
+    background-color: #ef4444;
 }
 
 .task-content {
     padding: 10px;
-    border: 1px solid;
 }

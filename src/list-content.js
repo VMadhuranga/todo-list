@@ -60,8 +60,7 @@ export function ListContent(todoList) {
 
     function addListItem(item) {
         addListButton.addEventListener("click", function() {
-            addListModal.show();
-            // addListModal.showModal()
+            addListModal.showModal();
         });
         
         addListSubmitButton.addEventListener("click", function() {
