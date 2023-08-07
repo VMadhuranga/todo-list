@@ -1,8 +1,8 @@
 export class Task {
-    constructor(title, description) {
+    constructor(title, description, date) {
         this.title = title;
         this.description = description;
-        this.date = new Date().toDateString();
+        this.date = date;
         this.complete = false;
     }
 

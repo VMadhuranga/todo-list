@@ -96,7 +96,12 @@ export function TaskContent(todoList, listItem) {
         addListTaskDateLabelInput.setAttribute("id", "date");
         addListTaskDateInput.setAttribute("id", "date");
 
-        submitListTask();
+        addListTask(
+            addListTaskTitleInput, 
+            addListTaskDescriptionInput, 
+            addListTaskDateInput,
+            addListTaskSubmitButton
+        );
         
         addListTaskForm.appendChild(addListTaskTitleInput);
         addListTaskForm.appendChild(addListTaskDescriptionInput);
@@ -108,5 +113,25 @@ export function TaskContent(todoList, listItem) {
         taskContent.appendChild(addListTaskModal);
 
         return addListTaskModal;
+    }
+
+    function addListTask(
+        addListTaskTitleInput, 
+        addListTaskDescriptionInput, 
+        addListTaskDateInput,
+        addListTaskSubmitButton) {
+            
+            addListTaskSubmitButton.addEventListener("click", function() {
+                todoList.createListTask(
+                    listItem.textContent, 
+                    addListTaskTitleInput.value,
+                    addListTaskDescriptionInput.value,
+                    addListTaskDateInput.value);
+                    
+                console.log(addListTaskTitleInput.value);
+                console.log(addListTaskDescriptionInput.value);
+                console.log(addListTaskDateInput.value);
+                console.log(todoList);
+            });
     }
 }

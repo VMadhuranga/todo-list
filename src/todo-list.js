@@ -25,9 +25,9 @@ export class TodoList {
         this.list.splice(this.list.findIndex((item) => item[listName]), 1);
     }
 
-    createListTask(listName, title, description) {
+    createListTask(listName, title, description, date) {
         if (this.getList(listName)) {
-            this.getList(listName).push(new Task(title, description));
+            this.getList(listName).push(new Task(title, description, date));
         }
     }
 
