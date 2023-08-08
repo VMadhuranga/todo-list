@@ -26,7 +26,22 @@
         </div>
         <div class="list-container"></div>
     </div>
-    <div class="task-content"></div>
+    <div class="task-content">
+        <div class="task-list-title-content">
+            <h2 class="task-list-title"></h2>
+            <button class="add-list-task-button">Add Task</button>
+            <dialog class="add-list-task-modal">
+                <form class="add-list-task-form" method="dialog">
+                    <input type="text" class="add-list-task-title-input" placeholder="Title">
+                    <textarea class="add-list-task-description-input" maxlength="100" placeholder="Description"></textarea>
+                    <label for="date">Set Date: <input id="date" type="date" class="add-list-task-date-input"></label>
+                    <button class="add-list-task-submit-button">Submit</button>
+                    <button class="add-list-task-cancel-button">Cancel</button>
+                </form>
+            </dialog>
+        </div>
+        <div class="task-container"></div>
+    </div>
 </body>
 
 </html>
