@@ -7,7 +7,7 @@ export class Task {
     }
 
     taskComplete() {
-        this.complete = true;
+        this.complete = this.complete === false ? true : false;
     }
 
     updateTask(title, description, date) {

@@ -7,7 +7,10 @@ function main() {
     todoList.createDefaultListTask("defaultTask1", "defaultTask1Description", new Date().toDateString());
     todoList.createDefaultListTask("defaultTask2", "defaultTask2Description", new Date().toDateString());
 
-    todoList.deleteDefaultListTask("defaultTask1");
+    todoList.updateDefaultListTaskCompleteStatus("defaultTask1");
+
+    // todoList.deleteDefaultListTask("defaultTask2");
+    // todoList.updateDefaultListTask("defaultTask1", "defaultNemTask1", "defaultNewTask1Description", new Date().toDateString());
 
     todoList.createList("list1");
     todoList.createList("list2");
@@ -20,10 +23,12 @@ function main() {
     todoList.createListTask("list3", "list3Task1", "list3Task1Description", new Date().toDateString());
     todoList.createListTask("list3", "list3Task2", "list3Task2Description", new Date().toDateString());
 
-    todoList.deleteList("list3");
+    // todoList.deleteList("list3");
+    // todoList.deleteListTask("list2", "list2Task2");
 
-    todoList.deleteListTask("list2", "list2Task2");
-
+    // todoList.updateListTask("list3", "list3Task1", "list3NewTask1", "list3NewTask1Description", new Date().toDateString());
+    todoList.updateListTaskCompleteStatus("list2" ,"list2Task2");
+    todoList.updateListTaskCompleteStatus("list2" ,"list2Task2");
     console.log(todoList);
 }
 
