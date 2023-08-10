@@ -6,12 +6,13 @@ export class Task {
         this.complete = false;
     }
 
-    markAsComplete() {
+    taskComplete() {
         this.complete = true;
     }
 
-    updateTask(title, description) {
+    updateTask(title, description, date) {
         this.title = title;
         this.description = description;
+        this.date = date;
     }
 }
