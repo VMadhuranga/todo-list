@@ -1,30 +1,30 @@
 import { TodoList } from "./todo-list";
-import { ListContent } from "./list-content";
 import "./style.css";
 
-const todoList = new TodoList;
+function main() {
+    const todoList = new TodoList;
 
-todoList.createList("testList1");
-todoList.createList("testList2");
-todoList.createList("testList3");
+    todoList.createDefaultListTask("defaultTask1", "defaultTask1Description", new Date().toDateString());
+    todoList.createDefaultListTask("defaultTask2", "defaultTask2Description", new Date().toDateString());
 
-todoList.createListTask("testList1", "testList1Title1", "testList1Description1", new Date().toDateString());
-todoList.createListTask("testList1", "testList1Title2", "testList1Description2", new Date().toDateString());
-todoList.createListTask("testList1", "testList1Title3", "testList1Description3", new Date().toDateString());
+    todoList.deleteDefaultListTask("defaultTask1");
 
-todoList.createListTask("testList2", "testList2Title1", "testList2Description1", new Date().toDateString());
-todoList.createListTask("testList2", "testList2Title2", "testList2Description2", new Date().toDateString());
-todoList.createListTask("testList2", "testList2Title3", "testList2Description3", new Date().toDateString());
+    todoList.createList("list1");
+    todoList.createList("list2");
+    todoList.createList("list3");
 
-todoList.createListTask("testList3", "testList3Title1", "testList3Description1", new Date().toDateString());
-todoList.createListTask("testList3", "testList3Title2", "testList3Description2", new Date().toDateString());
-todoList.createListTask("testList3", "testList3Title3", "testList3Description3", new Date().toDateString());
+    todoList.createListTask("list1", "list1Task1", "list1Task1Description", new Date().toDateString());
+    todoList.createListTask("list1", "list1Task2", "list1Task2Description", new Date().toDateString());
+    todoList.createListTask("list2", "list2Task1", "list2Task1Description", new Date().toDateString());
+    todoList.createListTask("list2", "list2Task2", "list2Task2Description", new Date().toDateString());
+    todoList.createListTask("list3", "list3Task1", "list3Task1Description", new Date().toDateString());
+    todoList.createListTask("list3", "list3Task2", "list3Task2Description", new Date().toDateString());
 
-// task.getListTask("testList2", "testTitle1").updateTask("updatedTestTitle1", "updatedTestDescription1");
-// task.deleteListTask("testList2", "testTitle2");
+    todoList.deleteList("list3");
 
-// console.log(task.getListTask("testList2", "testTitle1"));
-// console.log(task.getList("testList2"));
+    todoList.deleteListTask("list2", "list2Task2");
 
-ListContent(todoList);
-console.log(todoList);
+    console.log(todoList);
+}
+
+main();

@@ -2,42 +2,40 @@ import { Task } from "./task";
 
 export class TodoList {
 
-    list = [];
+    list = {
+        default: []
+    };
 
-    createList(listName) {
-        this.list.push({[listName]: []});
+    createList(listTitle) {
+        this.list[listTitle] = [];
     }
 
-    getList(listName) {
-        return this.list.find(item => item[listName])[listName];
+    getList(listTitle) {
+        return this.list[listTitle];
     }
 
-    renameList(oldListName, newListName) {
-        this.list.find((item) => {
-            if (item[oldListName]) {
-                item[newListName] = item[oldListName];
-                delete item[oldListName];
-            }
-        });
+    deleteList(listTitle) {
+        delete this.list[listTitle];
     }
 
-    deleteList(listName) {
-        this.list.splice(this.list.findIndex((item) => item[listName]), 1);
+    createDefaultListTask(taskTitle, taskDescription, taskDate) {
+        this.list.default.push(new Task(taskTitle, taskDescription, taskDate));
     }
 
-    createListTask(listName, title, description, date) {
-        if (this.getList(listName)) {
-            this.getList(listName).push(new Task(title, description, date));
-        }
+    deleteDefaultListTask(taskTitle) {
+        this.list.default.splice(this.list.default.findIndex(task => task.title === taskTitle), 1);
     }
 
-    getListTask(listName, taskTitle) {
-        return this.getList(listName).find(element => element["title"] === taskTitle);
+    createListTask(listTitle, taskTitle, taskDescription, taskDate) {
+        this.getList(listTitle).push(new Task(taskTitle, taskDescription, taskDate));
     }
 
-    deleteListTask(listName, taskTitle) {
-        this.getList(listName).splice(
-            this.getList(listName).findIndex(item => item === this.getListTask(listName, taskTitle)), 1
-        );
+    getListTask(listTitle, taskTitle) {
+        return this.getList(listTitle).find(task => task.title === taskTitle);
+    }
+
+    deleteListTask(listTitle, taskTitle) {
+        this.getList(listTitle).splice(
+            this.getList(listTitle).findIndex(task => task === this.getListTask(listTitle, taskTitle)), 1);
     }
 }
