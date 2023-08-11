@@ -13,30 +13,21 @@
         <h1>Todo List</h1>
     </div>
     <div class="list-content">
-        <div class="add-list-content">
-            <button class="add-list-button">Add List</button>
-            <dialog class="add-list-modal">
-                <form class="add-list-form" method="dialog">
-                    <h1>Add List</h1>
-                    <input type="text" class="add-list-input" placeholder="List Name">
-                    <button class="add-list-submit-button">Submit</button>
-                    <button class="add-list-cancel-button">Cancel</button>
-                </form>
-            </dialog>
+        <div class="list-container">
+            <p class="default-list">MyTask</p>
         </div>
-        <div class="list-container"></div>
     </div>
     <div class="task-content">
-        <div class="task-list-title-content">
-            <h2 class="task-list-title"></h2>
-            <button class="add-list-task-button">Add Task</button>
-            <dialog class="add-list-task-modal">
-                <form class="add-list-task-form" method="dialog">
-                    <input type="text" class="add-list-task-title-input" placeholder="Title">
-                    <textarea class="add-list-task-description-input" maxlength="100" placeholder="Description"></textarea>
-                    <label for="date">Set Date: <input id="date" type="date" class="add-list-task-date-input"></label>
-                    <button class="add-list-task-submit-button">Submit</button>
-                    <button class="add-list-task-cancel-button">Cancel</button>
+        <div class="task-header">
+            <h2 class="list-title"></h2>
+            <button class="add-task">Add Task</button>
+            <dialog class="add-task-modal">
+                <form method="dialog" class="add-task-form">
+                    <input id="add-task-title" type="text">
+                    <textarea id="add-task-description" maxlength="80"></textarea>
+                    <label for="add-task-date">Set Date: <input id="add-task-date" type="date"></label>
+                    <button id="submit-task">Submit</button>
+                    <button id="cancel-task">Cancel</button>
                 </form>
             </dialog>
         </div>
