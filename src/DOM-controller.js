@@ -14,22 +14,24 @@ export function DOMController(todoList) {
         listTitle.textContent = this.textContent;
         taskContainer.replaceChildren();
         updateTaskContainer(listTitle.textContent);
+        addTask(listTitle.textContent);
+        deleteTask(listTitle.textContent);
     });
-
-    addTask();
     
     function initialPageLoad() {
         listTitle.textContent = "MyTask";
         taskContainer.replaceChildren();
         updateTaskContainer(listTitle.textContent)
+        addTask(listTitle.textContent);
+        deleteTask(listTitle.textContent);
     }
 
-    function updateTaskContainer(list) {
-        for (let i = 0; i < todoList.getList(list).length; i++) {
+    function updateTaskContainer(item) {
+        for (let i = 0; i < todoList.getList(item).length; i++) {
             taskContainer.appendChild(taskCard(
-                todoList.getList(list)[i].title,
-                todoList.getList(list)[i].description,
-                todoList.getList(list)[i].date
+                todoList.getList(item)[i].title,
+                todoList.getList(item)[i].description,
+                todoList.getList(item)[i].date
             ));
         }
     }
@@ -51,6 +53,8 @@ export function DOMController(todoList) {
         deleteTask.textContent = "Delete";
         editTask.textContent = "Edit";
 
+        deleteTask.classList.add("delete-list");
+
         taskComplete.setAttribute("type", "checkbox");
 
         taskCard.appendChild(taskTitle);
@@ -64,22 +68,36 @@ export function DOMController(todoList) {
         return taskCard;
     }
 
-    function addTask() {
+    function addTask(item) {
         document.addEventListener("click", function(e) {
             if (e.target.className === "add-task") {
                 addTaskModal.showModal();
 
                 submitTask.addEventListener("click", function() {
                     todoList.createListTask(
-                        listTitle.textContent,
+                        item,
                         addTaskTitle.value,
                         addTaskDescription.value,
                         addTaskDate.value
                     );
                     taskContainer.replaceChildren();
-                    updateTaskContainer(listTitle.textContent);
-                });
+                    updateTaskContainer(item);
+                },{once: true});
             }
         });
     }
+
+    function deleteTask(item) {
+        document.addEventListener("click", function(e){
+            if (e.target.className === "delete-list") {
+                todoList.deleteListTask(
+                    item,
+                    e.target.parentElement.children[0].textContent
+                );
+                taskContainer.replaceChildren();
+                updateTaskContainer(item);
+            }
+        });
+    }
+
 }
