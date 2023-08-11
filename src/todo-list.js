@@ -3,7 +3,7 @@ import { Task } from "./task";
 export class TodoList {
 
     list = {
-        default: []
+        MyTask: []
     };
 
     createList(listTitle) {
@@ -19,26 +19,26 @@ export class TodoList {
     }
 
     createDefaultListTask(taskTitle, taskDescription, taskDate) {
-        this.list.default.push(new Task(taskTitle, taskDescription, taskDate));
+        this.list.MyTask.push(new Task(taskTitle, taskDescription, taskDate));
     }
 
-    getDefaultListTask(taskTitle) {
-         return this.list.default.find(task => task.title === taskTitle);
-    }
+    // getDefaultListTask(taskTitle) {
+    //      return this.list.MyTask.find(task => task.title === taskTitle);
+    // }
 
-    deleteDefaultListTask(taskTitle) {
-        this.list.default.splice(this.list.default.indexOf(this.getDefaultListTask(taskTitle)), 1);
-    }
+    // deleteDefaultListTask(taskTitle) {
+    //     this.list.MyTask.splice(this.list.MyTask.indexOf(this.getDefaultListTask(taskTitle)), 1);
+    // }
 
-    updateDefaultListTask(taskTitle, newTaskTitle, newTaskDescription, newDate) {
-        // this updateTask method is from class Task
-        this.getDefaultListTask(taskTitle).updateTask(newTaskTitle, newTaskDescription, newDate);
-    }
+    // updateDefaultListTask(taskTitle, newTaskTitle, newTaskDescription, newDate) {
+    //     // this updateTask method is from class Task
+    //     this.getDefaultListTask(taskTitle).updateTask(newTaskTitle, newTaskDescription, newDate);
+    // }
 
-    updateDefaultListTaskCompleteStatus(taskTitle) {
-        // this taskComplete method is from class Task
-        this.getDefaultListTask(taskTitle).taskComplete();
-    }
+    // updateDefaultListTaskCompleteStatus(taskTitle) {
+    //     // this taskComplete method is from class Task
+    //     this.getDefaultListTask(taskTitle).taskComplete();
+    // }
 
     createListTask(listTitle, taskTitle, taskDescription, taskDate) {
         this.getList(listTitle).push(new Task(taskTitle, taskDescription, taskDate));
