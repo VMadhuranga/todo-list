@@ -2,9 +2,7 @@ import { Task } from "./task";
 
 export class TodoList {
 
-    list = {
-        MyTask: []
-    };
+    list = {};
 
     createList(listTitle) {
         this.list[listTitle] = [];
@@ -18,48 +16,21 @@ export class TodoList {
         delete this.list[listTitle];
     }
 
-    createDefaultListTask(taskTitle, taskDescription, taskDate) {
-        this.list.MyTask.push(new Task(taskTitle, taskDescription, taskDate));
+    createListTask(listTitle, taskDetail, taskDate) {
+        this.getList(listTitle).push(new Task(taskDetail, taskDate));
     }
 
-    // getDefaultListTask(taskTitle) {
-    //      return this.list.MyTask.find(task => task.title === taskTitle);
-    // }
-
-    // deleteDefaultListTask(taskTitle) {
-    //     this.list.MyTask.splice(this.list.MyTask.indexOf(this.getDefaultListTask(taskTitle)), 1);
-    // }
-
-    // updateDefaultListTask(taskTitle, newTaskTitle, newTaskDescription, newDate) {
-    //     // this updateTask method is from class Task
-    //     this.getDefaultListTask(taskTitle).updateTask(newTaskTitle, newTaskDescription, newDate);
-    // }
-
-    // updateDefaultListTaskCompleteStatus(taskTitle) {
-    //     // this taskComplete method is from class Task
-    //     this.getDefaultListTask(taskTitle).taskComplete();
-    // }
-
-    createListTask(listTitle, taskTitle, taskDescription, taskDate) {
-        this.getList(listTitle).push(new Task(taskTitle, taskDescription, taskDate));
+    getListTask(listTitle, taskDetail) {
+        return this.getList(listTitle).find(task => task.taskDetail === taskDetail);
     }
 
-    getListTask(listTitle, taskTitle) {
-        return this.getList(listTitle).find(task => task.title === taskTitle);
-    }
-
-    deleteListTask(listTitle, taskTitle) {
+    deleteListTask(listTitle, taskDetail) {
         this.getList(listTitle).splice(
-            this.getList(listTitle).indexOf(this.getListTask(listTitle, taskTitle)), 1);
+            this.getList(listTitle).indexOf(this.getListTask(listTitle, taskDetail)), 1);
     }
 
-    updateListTask(listTitle, taskTitle, newTaskTitle, newTaskDescription, newDate) {
-        // this updateTask method is from class Task
-        (this.getListTask(listTitle, taskTitle).updateTask(newTaskTitle, newTaskDescription, newDate));
-    }
-
-    updateListTaskCompleteStatus(listTitle, taskTitle) {
+    updateListTaskCompleteStatus(listTitle, taskDetail) {
         // this taskComplete method is from class Task
-        this.getListTask(listTitle, taskTitle).taskComplete();
+        this.getListTask(listTitle, taskDetail).taskComplete();
     }
 }

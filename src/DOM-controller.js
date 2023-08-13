@@ -1,103 +1,127 @@
 export function DOMController(todoList) {
-    const defaultList = document.querySelector(".default-list");
+    const taskContent = document.querySelector(".task-content");
     const taskContainer = document.querySelector(".task-container");
+    const listContainer = document.querySelector(".list-container");
+    const addListInput = document.querySelector(".add-list-input");
+    const addListButton = document.querySelector(".add-list-button");
     const listTitle = document.querySelector(".list-title");
-    const addTaskModal = document.querySelector(".add-task-modal");
-    const addTaskTitle = document.querySelector("#add-task-title");
-    const addTaskDescription = document.querySelector("#add-task-description");
-    const addTaskDate = document.querySelector("#add-task-date");
-    const submitTask = document.querySelector("#submit-task");
+    const addTaskButton = document.querySelector(".add-task-button");
+    const addTaskInput = document.querySelector(".add-task-input");
+    const addTaskDate = document.querySelector(".add-task-date");
 
-    initialPageLoad();
+    updateListContainer();
+    addList();
+    deleteList()
+    showTaskContent();
+    addTask();
+    deleteTask();
 
-    defaultList.addEventListener("click", function() {
-        listTitle.textContent = this.textContent;
-        taskContainer.replaceChildren();
-        updateTaskContainer(listTitle.textContent);
-        addTask(listTitle.textContent);
-        deleteTask(listTitle.textContent);
-    });
-    
-    function initialPageLoad() {
-        listTitle.textContent = "MyTask";
-        taskContainer.replaceChildren();
-        updateTaskContainer(listTitle.textContent)
-        addTask(listTitle.textContent);
-        deleteTask(listTitle.textContent);
+    function addList() {
+        addListButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (!addListInput.value) {
+                alert("Please provide a list name");
+            } else if (todoList.getList(addListInput.value)) {
+                alert("List already exist");
+            } else {
+                todoList.createList(addListInput.value);
+            }
+            addListInput.value = null;
+            updateListContainer();
+        });
     }
+    
+    function deleteList() {
+        listContainer.addEventListener("click", (e) => {
+            if (e.target.className === "delete-list") {
+                todoList.deleteList(e.target.previousSibling.textContent);
+                console.log(todoList);
+            }
+            taskContent.setAttribute("hidden", "");
+            updateListContainer();
+        });
+    }
+    
+    function updateListContainer() {
+        listContainer.replaceChildren();
+        
+        for (let i in todoList.list) {
+            const listItem = document.createElement("li");
+            listItem.classList.add("list-item");
 
-    function updateTaskContainer(item) {
-        for (let i = 0; i < todoList.getList(item).length; i++) {
-            taskContainer.appendChild(taskCard(
-                todoList.getList(item)[i].title,
-                todoList.getList(item)[i].description,
-                todoList.getList(item)[i].date
-            ));
+            const deleteListItem = document.createElement("button");
+            deleteListItem.classList.add("delete-list");
+            deleteListItem.textContent = "x"
+
+            listItem.textContent = i;
+            listItem.appendChild(deleteListItem);
+            listContainer.appendChild(listItem);
         }
     }
 
-    function taskCard(title, description, date) {
-        const taskCard = document.createElement("div");
-        const taskTitle = document.createElement("h2")
-        const taskDescription = document.createElement("p");
-        const taskDate = document.createElement("p");
-        const taskComplete = document.createElement("input");
-        const taskCompleteLabel = document.createElement("label");
-        const deleteTask = document.createElement("button");
-        const editTask = document.createElement("button");
-
-        taskTitle.textContent = title;
-        taskDescription.textContent = description;
-        taskDate.textContent = date;
-        taskCompleteLabel.textContent = "Task Complete ";
-        deleteTask.textContent = "Delete";
-        editTask.textContent = "Edit";
-
-        deleteTask.classList.add("delete-list");
-
-        taskComplete.setAttribute("type", "checkbox");
-
-        taskCard.appendChild(taskTitle);
-        taskCard.appendChild(taskDescription);
-        taskCard.appendChild(taskDate);
-        taskCompleteLabel.appendChild(taskComplete);
-        taskCard.appendChild(taskCompleteLabel);
-        taskCard.appendChild(deleteTask);
-        taskCard.appendChild(editTask);
-
-        return taskCard;
-    }
-
-    function addTask(item) {
-        document.addEventListener("click", function(e) {
-            if (e.target.className === "add-task") {
-                addTaskModal.showModal();
-
-                submitTask.addEventListener("click", function() {
-                    todoList.createListTask(
-                        item,
-                        addTaskTitle.value,
-                        addTaskDescription.value,
-                        addTaskDate.value
-                    );
-                    taskContainer.replaceChildren();
-                    updateTaskContainer(item);
-                },{once: true});
+    function showTaskContent() {
+        listContainer.addEventListener("click", (e) => {
+            if (e.target.className === "list-item") {
+                taskContent.removeAttribute("hidden");
+                listTitle.textContent = e.target.firstChild.textContent
+                updateTaskContainer(listTitle.textContent);
             }
         });
     }
 
-    function deleteTask(item) {
-        document.addEventListener("click", function(e){
-            if (e.target.className === "delete-list") {
+    function updateTaskContainer(item) {
+        taskContainer.replaceChildren();
+
+        for (let i = 0; i < todoList.getList(item).length; i++) {
+            const task = document.createElement("div");
+
+            const taskCompete = document.createElement("input");
+            taskCompete.setAttribute("type", "checkbox");
+
+            const taskDetail = document.createElement("p");
+            taskDetail.textContent = todoList.getList(item)[i].taskDetail;
+
+            const taskDate = document.createElement("p");
+            taskDate.textContent = todoList.getList(item)[i].taskDate;
+
+            const deleteTask = document.createElement("button");
+            deleteTask.classList.add("delete-task");
+            deleteTask.textContent = "x";
+
+            task.appendChild(taskCompete);
+            task.appendChild(taskDetail);
+            task.appendChild(taskDate);
+            task.appendChild(deleteTask);
+
+            taskContainer.appendChild(task);
+        }
+    }
+
+    function addTask() {
+        addTaskButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (!addTaskInput.value) {
+                alert("Please provide a task detail and date");
+            } else {
+                todoList.createListTask(listTitle.textContent, addTaskInput.value, addTaskDate.value); 
+            }
+            addTaskInput.value = null;
+            addTaskDate.value = null;
+            updateTaskContainer(listTitle.textContent);
+        });
+    }
+
+    function deleteTask() {
+        taskContainer.addEventListener("click", (e) => {
+            if (e.target.className === "delete-task") {
+                console.log(e.target.parentElement.children[1].textContent);
                 todoList.deleteListTask(
-                    item,
-                    e.target.parentElement.children[0].textContent
+                    listTitle.textContent,
+                    e.target.parentElement.children[1].textContent
                 );
-                taskContainer.replaceChildren();
-                updateTaskContainer(item);
             }
+            updateTaskContainer(listTitle.textContent);
+            console.log(todoList);
         });
     }
-
 }
