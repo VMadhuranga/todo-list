@@ -28,3 +28,7 @@ body {
 .task-content {
     padding: 10px;
 }
+
+.strike-through {
+    text-decoration: line-through;
+}

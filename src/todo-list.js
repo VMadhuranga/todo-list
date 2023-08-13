@@ -29,8 +29,8 @@ export class TodoList {
             this.getList(listTitle).indexOf(this.getListTask(listTitle, taskDetail)), 1);
     }
 
-    updateListTaskCompleteStatus(listTitle, taskDetail) {
+    updateListTaskCompleteStatus(listTitle, taskDetail, status) {
         // this taskComplete method is from class Task
-        this.getListTask(listTitle, taskDetail).taskComplete();
+        this.getListTask(listTitle, taskDetail).taskComplete(status);
     }
 }

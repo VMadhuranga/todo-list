@@ -5,7 +5,7 @@ export class Task {
         this.complete = false;
     }
 
-    taskComplete() {
-        this.complete = this.complete === false ? true : false;
+    taskComplete(status) {
+        this.complete = status;
     }
 }

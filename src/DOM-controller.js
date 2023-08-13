@@ -23,28 +23,29 @@ export function DOMController(todoList) {
                 alert("Please provide a list name");
             } else if (todoList.getList(addListInput.value)) {
                 alert("List already exist");
+                addListInput.value = null;
             } else {
                 todoList.createList(addListInput.value);
+                addListInput.value = null;
+                updateListContainer();
             }
-            addListInput.value = null;
-            updateListContainer();
         });
     }
-    
+
     function deleteList() {
         listContainer.addEventListener("click", (e) => {
             if (e.target.className === "delete-list") {
                 todoList.deleteList(e.target.previousSibling.textContent);
                 console.log(todoList);
+                taskContent.setAttribute("hidden", "");
+                updateListContainer();
             }
-            taskContent.setAttribute("hidden", "");
-            updateListContainer();
         });
     }
-    
+
     function updateListContainer() {
         listContainer.replaceChildren();
-        
+
         for (let i in todoList.list) {
             const listItem = document.createElement("li");
             listItem.classList.add("list-item");
@@ -75,8 +76,8 @@ export function DOMController(todoList) {
         for (let i = 0; i < todoList.getList(item).length; i++) {
             const task = document.createElement("div");
 
-            const taskCompete = document.createElement("input");
-            taskCompete.setAttribute("type", "checkbox");
+            const taskComplete = document.createElement("input");
+            taskComplete.setAttribute("type", "checkbox");
 
             const taskDetail = document.createElement("p");
             taskDetail.textContent = todoList.getList(item)[i].taskDetail;
@@ -88,7 +89,9 @@ export function DOMController(todoList) {
             deleteTask.classList.add("delete-task");
             deleteTask.textContent = "x";
 
-            task.appendChild(taskCompete);
+            setTaskStatus(taskComplete);
+
+            task.appendChild(taskComplete);
             task.appendChild(taskDetail);
             task.appendChild(taskDate);
             task.appendChild(deleteTask);
@@ -103,11 +106,11 @@ export function DOMController(todoList) {
             if (!addTaskInput.value) {
                 alert("Please provide a task detail and date");
             } else {
-                todoList.createListTask(listTitle.textContent, addTaskInput.value, addTaskDate.value); 
+                todoList.createListTask(listTitle.textContent, addTaskInput.value, addTaskDate.value);
+                addTaskInput.value = null;
+                addTaskDate.value = null;
+                updateTaskContainer(listTitle.textContent);
             }
-            addTaskInput.value = null;
-            addTaskDate.value = null;
-            updateTaskContainer(listTitle.textContent);
         });
     }
 
@@ -119,9 +122,29 @@ export function DOMController(todoList) {
                     listTitle.textContent,
                     e.target.parentElement.children[1].textContent
                 );
+                updateTaskContainer(listTitle.textContent);
             }
-            updateTaskContainer(listTitle.textContent);
-            console.log(todoList);
+        });
+    }
+
+    function setTaskStatus(item) {
+        item.addEventListener("click", () => {
+            console.log(listTitle.textContent);
+            if (item.checked) {
+                todoList.updateListTaskCompleteStatus(
+                    listTitle.textContent,
+                    item.nextElementSibling.textContent,
+                    item.checked
+                );
+                item.nextElementSibling.classList.add("strike-through")
+            } else {
+                todoList.updateListTaskCompleteStatus(
+                    listTitle.textContent,
+                    item.nextElementSibling.textContent,
+                    item.checked
+                );
+                item.nextElementSibling.classList.remove("strike-through");
+            }
         });
     }
 }
