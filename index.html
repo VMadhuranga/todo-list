@@ -13,25 +13,20 @@
         <h1>Todo List</h1>
     </div>
     <div class="list-content">
-        <div class="list-container">
-            <p class="default-list">MyTask</p>
-        </div>
+        <ul class="list-container"></ul>
+        <form class="add-list-form">
+            <input type="text" class="add-list-input">
+            <button class="add-list-button">Add List</button>
+        </form>
     </div>
-    <div class="task-content">
-        <div class="task-header">
-            <h2 class="list-title"></h2>
-            <button class="add-task">Add Task</button>
-            <dialog class="add-task-modal">
-                <form method="dialog" class="add-task-form">
-                    <input id="add-task-title" type="text">
-                    <textarea id="add-task-description" maxlength="80"></textarea>
-                    <label for="add-task-date">Set Date: <input id="add-task-date" type="date"></label>
-                    <button id="submit-task">Submit</button>
-                    <button id="cancel-task">Cancel</button>
-                </form>
-            </dialog>
-        </div>
+    <div class="task-content" hidden>
+        <h2 class="list-title"></h2>
         <div class="task-container"></div>
+        <form class="add-task-form">
+            <input type="text" class="add-task-input">
+            <input type="date" class="add-task-date">
+            <button class="add-task-button">Add Task</button>
+        </form>
     </div>
 </body>
 
