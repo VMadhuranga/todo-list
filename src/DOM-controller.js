@@ -83,7 +83,7 @@ export function DOMController(todoList) {
             taskDetail.textContent = todoList.getList(item)[i].taskDetail;
 
             const taskDate = document.createElement("p");
-            taskDate.textContent = todoList.getList(item)[i].taskDate;
+            taskDate.textContent = `Task due in: ${todoList.getList(item)[i].taskDate}`;
 
             const deleteTask = document.createElement("button");
             deleteTask.classList.add("delete-task");
@@ -103,10 +103,10 @@ export function DOMController(todoList) {
     function addTask() {
         addTaskButton.addEventListener("click", (e) => {
             e.preventDefault();
-            if (!addTaskInput.value) {
+            if (!(addTaskInput.value && addTaskDate.valueAsNumber)) {
                 alert("Please provide a task detail and date");
             } else {
-                todoList.createListTask(listTitle.textContent, addTaskInput.value, addTaskDate.value);
+                todoList.createListTask(listTitle.textContent, addTaskInput.value, addTaskDate.valueAsNumber);
                 addTaskInput.value = null;
                 addTaskDate.value = null;
                 updateTaskContainer(listTitle.textContent);
