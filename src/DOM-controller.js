@@ -15,6 +15,7 @@ export function DOMController(todoList) {
     showTaskContent();
     addTask();
     deleteTask();
+    setTaskStatus();
 
     function addList() {
         addListButton.addEventListener("click", (e) => {
@@ -78,6 +79,7 @@ export function DOMController(todoList) {
 
             const taskComplete = document.createElement("input");
             taskComplete.setAttribute("type", "checkbox");
+            taskComplete.setAttribute("id", "task-status");
 
             const taskDetail = document.createElement("p");
             taskDetail.textContent = todoList.getList(item)[i].taskDetail;
@@ -89,7 +91,14 @@ export function DOMController(todoList) {
             deleteTask.classList.add("delete-task");
             deleteTask.textContent = "x";
 
-            setTaskStatus(taskComplete);
+            if (todoList.getList(item)[i].complete) {
+                console.log(todoList.getList(item)[i].complete);
+                taskComplete.setAttribute("checked", "");
+                taskDetail.classList.add("strike-through");
+            } else {
+                taskComplete.removeAttribute("checked", "");
+                taskDetail.classList.remove("strike-through");
+            }
 
             task.appendChild(taskComplete);
             task.appendChild(taskDetail);
@@ -127,23 +136,27 @@ export function DOMController(todoList) {
         });
     }
 
-    function setTaskStatus(item) {
-        item.addEventListener("click", () => {
-            console.log(listTitle.textContent);
-            if (item.checked) {
-                todoList.updateListTaskCompleteStatus(
-                    listTitle.textContent,
-                    item.nextElementSibling.textContent,
-                    item.checked
-                );
-                item.nextElementSibling.classList.add("strike-through")
-            } else {
-                todoList.updateListTaskCompleteStatus(
-                    listTitle.textContent,
-                    item.nextElementSibling.textContent,
-                    item.checked
-                );
-                item.nextElementSibling.classList.remove("strike-through");
+    function setTaskStatus() {
+        taskContainer.addEventListener("click", (e) => {
+            if (e.target.id === "task-status") {
+                console.log(e.target);
+
+                if (e.target.checked) {
+                    todoList.updateListTaskCompleteStatus(
+                        listTitle.textContent,
+                        e.target.nextElementSibling.textContent,
+                        e.target.checked
+                    );
+                    updateTaskContainer(listTitle.textContent);
+                } else {
+                    todoList.updateListTaskCompleteStatus(
+                        listTitle.textContent,
+                        e.target.nextElementSibling.textContent,
+                        e.target.checked
+                    );
+                    updateTaskContainer(listTitle.textContent);
+                }
+                console.log(todoList);
             }
         });
     }
