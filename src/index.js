@@ -6,7 +6,6 @@ function main() {
     const todoList = new TodoList;
 
     DOMController(todoList);
-    console.log(todoList);
 }
 
 main();

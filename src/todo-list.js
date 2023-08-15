@@ -7,7 +7,6 @@ export class TodoList {
     createList(listTitle) {
         this.list[listTitle] = [];
         localStorage.setItem("todo.list", JSON.stringify(this.list));
-
     }
 
     getList(listTitle) {
@@ -37,7 +36,6 @@ export class TodoList {
     }
 
     updateListTaskCompleteStatus(listTitle, taskDetail, status) {
-        // this taskComplete method is from class Task
         this.getListTask(listTitle, taskDetail).complete = status;
         localStorage.setItem("todo.list", JSON.stringify(this.list));
 
