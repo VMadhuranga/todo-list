@@ -6,8 +6,4 @@ export class Task {
         this.taskDate = format(taskDate, 'EEE MMM dd yyyy');
         this.complete = false;
     }
-
-    taskComplete(status) {
-        this.complete = status;
-    }
 }

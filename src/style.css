@@ -25,8 +25,125 @@ body {
     padding: 10px;
 }
 
+.list-container {
+    list-style: none;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.list-item {
+    width: 100%;
+    padding: 3px 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-item:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.delete-list {
+    font-size: 1.5rem;
+    padding-bottom: 3px;
+    font-weight: bold;
+    border: none;
+    background: none;
+}
+
+.add-list-input,
+.add-task-input {
+    background: transparent;
+    font-size: 1rem;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    outline: none;
+    margin-bottom: 5px;
+}
+
+.add-list-input:hover,
+.add-list-input:focus,
+.add-task-input:hover,
+.add-task-input:focus {
+    border-bottom: 2px solid black;
+}
+
+.add-list-button,
+.add-task-button {
+    font-weight: bold;
+    background-color: #3b82f6;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+.add-list-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .task-content {
     padding: 10px;
+    background-color: white;
+}
+
+.task-container {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.list-title {
+    font-size: 2rem;
+    padding: 10px;
+}
+
+.task {
+    font-size: 1.2rem;
+    padding: 5px 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-detail {
+    flex-grow: 1;
+}
+
+.delete-task {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: 4px;
+    border: none;
+    background: none;
+}
+
+.add-task-form {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    & span {
+        color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+.add-task-input {
+    width: 500px;
+}
+
+.add-task-date {
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 3px;
 }
 
 .strike-through {
