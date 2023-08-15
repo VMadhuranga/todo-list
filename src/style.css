@@ -63,7 +63,6 @@ body {
     border: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
     outline: none;
-    margin-bottom: 5px;
 }
 
 .add-list-input:hover,
@@ -85,6 +84,7 @@ body {
 .add-list-form {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -129,6 +129,7 @@ body {
     padding: 5px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 15px;
 
     & span {
@@ -137,7 +138,8 @@ body {
 }
 
 .add-task-input {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
 }
 
 .add-task-date {
